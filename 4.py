@@ -1,7 +1,10 @@
-from random import randint
+rus = {'One': 'Один', 'Two': 'Два', 'Three': 'Три', 'Four': 'Четыре'}
+new_file = []
 
-my_list = [randint(-10, 10) for _ in range(10)]
+with open('task_4.txt', 'r') as f:
+    for line in f:
+        line = line.split(' ', 1)
+        new_file.append(rus[line[0]] + '  ' + line[1])
 
-my_new_list = [el for el in my_list if my_list.count(el) == 1]
-print(f'Исходный список {my_list}')
-print(f'Новый список, не имеющий повторений {my_new_list}')
+with open('task_4_new.txt', 'w') as f2:
+    f2.writelines(new_file)

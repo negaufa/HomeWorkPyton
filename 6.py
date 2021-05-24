@@ -1,31 +1,10 @@
-from itertools import count, cycle
+subjects = {}
 
+with open('task_6.txt', 'r') as f:
+    for line in f.readlines():
+        data = line.replace('(', ' ').split()
+        subjects[data[0]] = sum(
+            int(i) for i in data if i.isdigit()
+        )
 
-def count_func(start, stop):
-    for el in count(int(start)):
-        if el > int(stop):
-            break
-        else:
-            print(el)
-
-
-def cycle_func(stop, my_list):
-    iterable = cycle(my_list)
-    count = 0
-    while count < stop:
-        print(next(iterable))
-        count += 1
-
-
-def main():
-    start = int(input("Введите стартовое значение: "))
-    stop_count = int(input("Введите конечное значение: "))
-    count_func(start, stop_count)
-    print('Генерация чисел завершена')
-    my_list = [15, 2, 1]
-    stop_cycle = int((input("Введите количетсво итераций: ")))
-    cycle_func(stop_cycle, my_list)
-    print('Итерация списка завершена')
-
-
-main()
+print(subjects)
