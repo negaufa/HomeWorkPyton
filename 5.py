@@ -1,12 +1,29 @@
-user_string = input('Введите строку чисел, разделённых пробелом. ')
-result = 0
-with open('task_5.txt', 'r+') as f:
-    f.writelines(user_string)
-    numbers = f.readline()
+class Stationery:
+    def __init__(self, title):
+        self.title = title
 
-for i in numbers:
-    try:
-        result += int(i)
-    except ValueError:
-        "Неверный формат данных"
-print(result)
+    def draw(self):
+        return 'Запуск отрисовки {self.title}'
+
+
+class Pen(Stationery):
+    def draw(self):
+        return f'Вы взяли {self.title}. Запуск отрисовки ручкой'
+
+
+class Pencil(Stationery):
+    def draw(self):
+        return f'Вы взяли {self.title}. Запуск отрисовки карандашом'
+
+
+class Handle(Stationery):
+    def draw(self):
+        return f'Вы взяли {self.title}. Запуск отрисовки маркером'
+
+
+pen = Pen('Ручка')
+pencil = Pencil('Карандаш')
+handle = Handle('Маркер')
+print(pen.draw())
+print(pencil.draw())
+print(handle.draw())
